@@ -3,7 +3,7 @@ from agage_archive.run import run_all
 
 if __name__ == "__main__":
 
-    run_all("project",
+    run_all("paris",
             combined=False,
             baseline=False,
             monthly=False,
