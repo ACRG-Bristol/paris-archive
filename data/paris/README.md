@@ -112,7 +112,7 @@ There are sub-directories within each species directory. The ```monthly-baseline
 
 The ```individual-instrument``` sub-directory contains files for individual instruments, which may have been combined to for the default files for some species and sites.
 
-# PROJECT Data Statement:
+# Data Statement:
 
 These data are made available to the scientific community and public to improve understanding of climate change and ozone depletion and to lead to new scientific insights. We rely on the ethics and integrity of the user to ensure that project scientists receive fair credit for their work.
 
@@ -128,13 +128,11 @@ Use of these data implies an agreement to reciprocate. Laboratories making simil
 
 # Acknowledgements
 
-Publications must state: ...
+Please thank the listed contacts (who are not already co-authors) whose data is used in your paper.
 
 # Citation of dataset
  
 (1) Obtain and cite the DOI of the specific version of the data that you have used.
-
-(2) ...
 
 # Licence
 
