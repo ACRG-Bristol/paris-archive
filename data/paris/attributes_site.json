@@ -1,6 +1,6 @@
 {
     "BIR": {
-        "inlet_height": 10,
+        "inlet_height": 75,
         "sampling_period": 3600,
         "inlet_base_elevation": 190,
         "inlet_latitude": 58.3800010681,
