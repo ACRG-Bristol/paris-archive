@@ -1,0 +1,19 @@
+# Mole fraction data during the ranges in this worksheet will be excluded
+# Date format must by YYYY-MM-DD HH:MM
+# Make sure that the cell format is text rather than Excel's date format
+Species,Instrument,Start,End,Notes
+hfc-23,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-32,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-125,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-134a,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-143a,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-152a,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-227ea,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-236fa,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-245fa,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-365mfc,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+hfc-4310mee,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+sf6,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+c2f6,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+c3f8,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
+c4f8,GCMS-Medusa-flask,1970-01-01 00:00,2023-01-01 00:00,Email with Andreas and Cedric June 25
