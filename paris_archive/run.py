@@ -4,6 +4,7 @@ from pathlib import Path
 from glob import glob
 import os
 import xarray as xr
+import pandas as pd
 import numpy as np
 
 def preprocess():
@@ -35,12 +36,18 @@ def preprocess():
     os.chdir(zsf_ms_folder)
     os.system("cp ../zugspitze-ecd/zsf_sf6.nc ./sf6_air.nc")
     x = xr.open_dataset("sf6_air.nc")
-    x["time"] = x["time"].astype("int")// 10**9
-    x["sample_time"] = x["time"] + 2500/2  # Need to add on 1/2 MS sample time
     x["SF6_C"] = x["sf6_C"]/1.002  # Convert to SIO-05 scale using Guillevic value
     x["SF6_std_stdev"] = x["sf6_C"]
-    # For now use the 2023 average from an old file that Katharina sent to Alistair
-    x["SF6_std_stdev"].values = np.repeat(0.11127, x.sizes["time"])
+    # Read in the repeatability values Cedric sent
+    mf_rep = pd.read_csv("../zugspitze-ecd/SF6_Std_Stdv.txt",
+                         sep="\t",
+                         index_col="Date",
+                         date_format="%d.%m.%Y")
+    time_df = x["sf6_C"].to_dataframe()
+    stdev_merge = pd.merge_ordered(time_df, mf_rep, fill_method="ffill", left_on="time", right_on="Date", how="left")["Stdv"]
+    x["SF6_std_stdev"].values = stdev_merge
+    x["time"] = x["time"].astype("int")// 10**9
+    x["sample_time"] = x["time"] + 2500/2  # Need to add on 1/2 MS sample time
     x.to_netcdf("sf6_air.nc_temp")
     os.system("rm -f sf6_air.nc")
     os.system("mv sf6_air.nc_temp sf6_air.nc")
