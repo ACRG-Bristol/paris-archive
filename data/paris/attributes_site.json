@@ -1,8 +1,8 @@
 {
     "BIR": {
         "inlet_height": 75,
-        "sampling_period": 3600,
-        "inlet_base_elevation": 190,
+        "sampling_period": 300,
+        "inlet_base_elevation_masl": 190,
         "inlet_latitude": 58.3800010681,
         "inlet_longitude": 8.2500,
         "data_owner": "Chris Lunder, NILU",
@@ -12,5 +12,47 @@
         "instrument": "Kjeller Medusa",
         "instrument_date": "",
         "instrument_comment": "Kjeller Medusa, NILU"
+    },
+    "CGR": {
+        "inlet_height": 30,
+        "sampling_period": 2400,
+        "inlet_base_elevation_masl": 5,
+        "inlet_latitude": 37.571111,
+        "inlet_longitude": 12.659722,
+        "data_owner": "Jgor Arduini, Michela Maione",
+        "data_owner_email": "jgor.arduini@uniurb.it, michela.maione@uniurb.it",
+        "station_long_name": "Capo Granitola station, Italy",
+        "site_code": "CGR",
+        "instrument": "GCMS-CapoGranitola",
+        "instrument_date": "",
+        "instrument_comment": "GCMS-ADS system formerly at Monte Cimone"
+    },
+    "HUN": {
+        "inlet_height": 115,
+        "sampling_period": 30,
+        "inlet_base_elevation_masl": 248,
+        "inlet_latitude": 46.9558,
+        "inlet_longitude": 16.6522,
+        "data_owner": "Tanja Schuck",
+        "data_owner_email": "schuck@iau.uni-frankfurt.de",
+        "station_long_name": "Hegyhátsál háttérszennyettség-mérő állomás, Hungary",
+        "site_code": "HUN",
+        "instrument": "Goethe University Lab GCMS",
+        "instrument_date": "",
+        "instrument_comment": "custom build GCMS system operated in lab at GUF, using GasPro column, Agilent 7890A GC and Agilent 5975 MS (EI), see Schuck et al., Atmos. Chem. Phys., 18, 16553–16569, 2018, https://doi.org/10.5194/acp-18-16553-2018"
+    },
+    "ZSF": {
+        "inlet_height": 3,
+        "sampling_period": 2500,
+        "inlet_base_elevation_masl": 2666,
+        "inlet_latitude": 47.4165,
+        "inlet_longitude": 10.9796,
+        "data_owner": "Cédric Couret",
+        "data_owner_email": "cedric.couret@uba.de",
+        "station_long_name": "Zugspitze, Germany",
+        "site_code": "ZSF",
+        "instrument": "Zugspitze GCMS",
+        "instrument_date": "",
+        "instrument_comment": ""
     }
 }
