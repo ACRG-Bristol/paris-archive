@@ -5,19 +5,19 @@
 # All data will be processed until the general release date unless specified in the table
 # x indicates that no part of the record will be processed
 # General release date: 2025-01-01 00:00
-Species,BIR,CGR,HUN,ZSF
-hfc-23,,,x,
-hfc-32,,x,,
-hfc-125,,x,,
-hfc-134a,,,,
-hfc-143a,,,,
-hfc-152a,,,,
-hfc-227ea,,,,x
-hfc-236fa,,,,
-hfc-245fa,,,,
-hfc-365mfc,,,x,
-hfc-4310mee,,,x,
-sf6,,x,,
-c2f6,,x,x,
-c3f8,,,x,
-c4f8,,,,
+Species,BIR,CGR,HUN,ZSF,CMN
+hfc-23,,,x,,x
+hfc-32,,x,,,x
+hfc-125,,x,,,x
+hfc-134a,,,,,x
+hfc-143a,,,,,x
+hfc-152a,,,,,x
+hfc-227ea,,,,x,x
+hfc-236fa,,,,,x
+hfc-245fa,,,,,x
+hfc-365mfc,,,x,,x
+hfc-4310mee,,,x,,x
+sf6,,x,,,2017-12-27 07:00
+c2f6,,x,x,,x
+c3f8,,,x,,x
+c4f8,,,,,x
