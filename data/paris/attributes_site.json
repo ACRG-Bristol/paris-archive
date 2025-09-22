@@ -27,6 +27,20 @@
         "instrument_date": "",
         "instrument_comment": "GCMS-ADS system formerly at Monte Cimone"
     },
+    "CMN": {
+        "inlet_height": 7,
+        "sampling_period": 0,
+        "inlet_base_elevation_masl": 2165,
+        "inlet_latitude": 44.193198,
+        "inlet_longitude": 10.701410,
+        "data_owner": "Jgor Arduini",
+        "data_owner_email": "jgor.arduini@uniurb.it",
+        "station_long_name": "Monte Cimone, Italy",
+        "site_code": "CMN",
+        "instrument": "GCECD",
+        "instrument_date": "",
+        "instrument_comment": ""
+    },
     "HUN": {
         "inlet_height": 115,
         "sampling_period": 30,

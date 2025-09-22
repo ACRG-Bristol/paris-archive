@@ -70,6 +70,18 @@ def preprocess():
         os.system("rm -f " + f)
         os.system("mv " + f + "_temp " + f)
 
+    # Now CMN
+    paths = Paths("paris", site="cmn")
+    cmn_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+
+    files = glob(str(cmn_folder) + "/*_air.nc")
+    for f in files:
+        x = xr.open_dataset(f)
+        x["sample_time"] = x["time"]
+        x.to_netcdf(f + "_temp")
+        os.system("rm -f " + f)
+        os.system("mv " + f + "_temp " + f)
+
     # Now HUN
     paths = Paths("paris", site="hun")
     hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
@@ -86,7 +98,7 @@ def postprocess():
     # Change instrument_type (variable and attr) and comment for ZSF and CGR
     os.chdir("../data/paris")
     os.system("unzip paris-archive.zip -d paris-archive")
-    for site in ["cgr", "zsf"]:
+    for site in ["cgr", "zsf", "cmn"]:
         files = glob("paris-archive/*/paris_" + site + "_*.nc")
         for f in files:
             x = xr.open_dataset(f)
@@ -97,6 +109,11 @@ def postprocess():
                 x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD")
                 x.attrs["instrument"] = "Zugspitze GCECD"
                 x.attrs["sampling_period"] = 3600
+            elif site == "cmn" and x.attrs["species"] == "sf6":
+                x["instrument_type"].values = np.repeat(6, x.sizes["time"])
+                x["mf"].values = x["mf"].values/1.002  # Convert to SIO-05 scale using Guillevic value
+                x.attrs["instrument_type"] = "GCECD"
+                x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD")
             else:
                 x["instrument_type"].values = np.repeat(13, x.sizes["time"])
                 x.attrs["instrument_type"] = "GCMS"
