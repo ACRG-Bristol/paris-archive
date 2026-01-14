@@ -41,6 +41,7 @@ def preprocess():
     # Read in the repeatability values Cedric sent
     mf_rep = pd.read_csv("../zugspitze-ecd/SF6_Std_Stdv.txt",
                          sep="\t",
+                         na_values="-999.999",
                          index_col="Date",
                          date_format="%d.%m.%Y")
     time_df = x["sf6_C"].to_dataframe()
