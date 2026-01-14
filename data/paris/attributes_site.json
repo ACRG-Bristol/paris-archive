@@ -2,9 +2,9 @@
     "BIR": {
         "inlet_height": 75,
         "sampling_period": 300,
-        "inlet_base_elevation_masl": 190,
-        "inlet_latitude": 58.3800010681,
-        "inlet_longitude": 8.2500,
+        "inlet_base_elevation_masl": 219,
+        "inlet_latitude": 58.3886,
+        "inlet_longitude": 8.2519,
         "data_owner": "Chris Lunder, NILU",
         "data_owner_email": "chris.lunder@nilu.no",
         "station_long_name": "Birkenes (Norway)",
@@ -14,7 +14,7 @@
         "instrument_comment": "Kjeller Medusa, NILU"
     },
     "CGR": {
-        "inlet_height": 30,
+        "inlet_height": 6,
         "sampling_period": 2400,
         "inlet_base_elevation_masl": 5,
         "inlet_latitude": 37.571111,
@@ -30,7 +30,7 @@
     "CMN": {
         "inlet_height": 7,
         "sampling_period": 0,
-        "inlet_base_elevation_masl": 2165,
+        "inlet_base_elevation_masl": 2155,
         "inlet_latitude": 44.193198,
         "inlet_longitude": 10.701410,
         "data_owner": "Jgor Arduini",
@@ -56,9 +56,9 @@
         "instrument_comment": "custom build GCMS system operated in lab at GUF, using GasPro column, Agilent 7890A GC and Agilent 5975 MS (EI), see Schuck et al., Atmos. Chem. Phys., 18, 16553–16569, 2018, https://doi.org/10.5194/acp-18-16553-2018"
     },
     "ZSF": {
-        "inlet_height": 3,
+        "inlet_height": 1.5,
         "sampling_period": 2500,
-        "inlet_base_elevation_masl": 2666,
+        "inlet_base_elevation_masl": 2825,
         "inlet_latitude": 47.4165,
         "inlet_longitude": 10.9796,
         "data_owner": "Cédric Couret",
