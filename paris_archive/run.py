@@ -71,25 +71,25 @@ def preprocess():
         os.system("rm -f " + f)
         os.system("mv " + f + "_temp " + f)
 
-    # Now CMN
-    paths = Paths("paris", site="cmn")
-    cmn_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    # # Now CMN
+    # paths = Paths("paris", site="cmn")
+    # cmn_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
 
-    files = glob(str(cmn_folder) + "/*_air.nc")
-    for f in files:
-        x = xr.open_dataset(f)
-        x["sample_time"] = x["time"]
-        x.to_netcdf(f + "_temp")
-        os.system("rm -f " + f)
-        os.system("mv " + f + "_temp " + f)
+    # files = glob(str(cmn_folder) + "/*_air.nc")
+    # for f in files:
+    #     x = xr.open_dataset(f)
+    #     x["sample_time"] = x["time"]
+    #     x.to_netcdf(f + "_temp")
+    #     os.system("rm -f " + f)
+    #     os.system("mv " + f + "_temp " + f)
 
-    # Now HUN
-    paths = Paths("paris", site="hun")
-    hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
-    os.chdir(hun_folder)
-    os.system("cp ../taunus-ecd_HUN_flask/sf6_air.nc ./sf6_air.nc")
+    # # Now HUN
+    # paths = Paths("paris", site="hun")
+    # hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    # os.chdir(hun_folder)
+    # os.system("cp ../taunus-ecd_HUN_flask/sf6_air.nc ./sf6_air.nc")
 
-    os.chdir(current_dir)
+    # os.chdir(current_dir)
 
 def postprocess():
     """Postprocess data files before running the main script 
@@ -123,12 +123,12 @@ def postprocess():
             os.system("rm -f " + f)
             os.system("mv " + f + "_temp " + f)
 
-    # Also change TOB SF6
-    files = glob("paris-archive/sf6/paris_hun*.nc")
-    x = xr.open_dataset(files[0])
-    x["instrument_type"].values = np.repeat(-1, x.sizes["time"])
-    x.attrs["instrument_type"] = "GCECD flask"
-    x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD flask")
+    # # Also change TOB SF6
+    # files = glob("paris-archive/sf6/paris_hun*.nc")
+    # x = xr.open_dataset(files[0])
+    # x["instrument_type"].values = np.repeat(-1, x.sizes["time"])
+    # x.attrs["instrument_type"] = "GCECD flask"
+    # x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD flask")
 
     # Now rezip
     os.system("rm paris-archive.zip")
@@ -142,11 +142,11 @@ def postprocess():
     os.chdir(zsf_ms_folder)
     os.system("rm sf6_air.nc")
 
-    os.chdir(current_dir)
-    paths = Paths("paris", site="hun")
-    hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
-    os.chdir(hun_folder)
-    os.system("rm sf6_air.nc")
+    # os.chdir(current_dir)
+    # paths = Paths("paris", site="hun")
+    # hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    # os.chdir(hun_folder)
+    # os.system("rm sf6_air.nc")
     
 
 if __name__ == "__main__":
@@ -154,6 +154,7 @@ if __name__ == "__main__":
     preprocess()
 
     run_all("paris",
+            sites=["BIR","ZSF"],
             combined=False,
             baseline=False,
             monthly=False,
