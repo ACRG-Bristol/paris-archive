@@ -16,21 +16,21 @@ def preprocess():
     paths = Paths("paris", site="zsf")
     zsf_ms_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
 
-    files = glob(str(zsf_ms_folder) + "/*_air.nc")
-    for f in files:
-        x = xr.open_dataset(f)
-        # Subtract 92 min offset from Cedric Couret email to Joe Pitt 2025-06-07
-        # 60 mins to put timestamp on UTC
-        # 32 mins to get from the chromatogram time to the start of sampling
-        x["sample_time"] = x["time"] - 92*60
-        x_std = xr.open_dataset(f.split("_")[-2] + "_std.nc")
-        spec_name = list(x.keys())[0].split("_")[0]
-        rep = x_std[spec_name + "_C"].sel(time=slice(1721865600,4000000000)).std()  # average for latest std
-        x[spec_name + "_std_stdev"] = x[spec_name + "_C"]
-        x[spec_name + "_std_stdev"].values = np.repeat(float(rep), x.sizes["time"])
-        x.to_netcdf(f + "_temp")
-        os.system("rm -f " + f)
-        os.system("mv " + f + "_temp " + f)
+    # files = glob(str(zsf_ms_folder) + "/*_air.nc")
+    # for f in files:
+    #     x = xr.open_dataset(f)
+    #     # Subtract 92 min offset from Cedric Couret email to Joe Pitt 2025-06-07
+    #     # 60 mins to put timestamp on UTC
+    #     # 32 mins to get from the chromatogram time to the start of sampling
+    #     x["sample_time"] = x["time"] - 92*60
+    #     x_std = xr.open_dataset(f.split("_")[-2] + "_std.nc")
+    #     spec_name = list(x.keys())[0].split("_")[0]
+    #     rep = x_std[spec_name + "_C"].sel(time=slice(1721865600,4000000000)).std()  # average for latest std
+    #     x[spec_name + "_std_stdev"] = x[spec_name + "_C"]
+    #     x[spec_name + "_std_stdev"].values = np.repeat(float(rep), x.sizes["time"])
+    #     x.to_netcdf(f + "_temp")
+    #     os.system("rm -f " + f)
+    #     os.system("mv " + f + "_temp " + f)
 
     # Now move ecd sf6 into the ms directory
     os.chdir(zsf_ms_folder)
