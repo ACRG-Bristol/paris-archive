@@ -4,20 +4,20 @@
 # Date format YYYY-MM-DD HH:MM
 # All data will be processed until the general release date unless specified in the table
 # x indicates that no part of the record will be processed
-# General release date: 2025-01-01 00:00
+# General release date: 2026-01-01 00:00
 Species,BIR,CGR,HUN,ZSF,CMN
-hfc-23,,x,x,x,x
-hfc-32,,x,x,x,x
-hfc-125,,x,x,x,x
-hfc-134a,,x,x,x,x
-hfc-143a,,x,x,x,x
-hfc-152a,,x,x,x,x
-hfc-227ea,,x,x,x,x
-hfc-236fa,,x,x,x,x
-hfc-245fa,,x,x,x,x
-hfc-365mfc,,x,x,x,x
-hfc-4310mee,,x,x,x,x
-sf6,,x,x,,x
-c2f6,,x,x,x,x
-c3f8,,x,x,x,x
-c4f8,,x,x,x,x
+hfc-23,2025-11-01 00:00,x,x,x,x
+hfc-32,2025-11-01 00:00,x,x,x,x
+hfc-125,2025-11-01 00:00,x,x,x,x
+hfc-134a,2025-11-01 00:00,x,x,x,x
+hfc-143a,2025-11-01 00:00,x,x,x,x
+hfc-152a,2025-11-01 00:00,x,x,x,x
+hfc-227ea,2025-11-01 00:00,x,x,x,x
+hfc-236fa,2025-11-01 00:00,x,x,x,x
+hfc-245fa,2025-11-01 00:00,x,x,x,x
+hfc-365mfc,2025-11-01 00:00,x,x,x,x
+hfc-4310mee,2025-11-01 00:00,x,x,x,x
+sf6,2025-11-01 00:00,x,x,,x
+c2f6,2025-11-01 00:00,x,x,x,x
+c3f8,2025-11-01 00:00,x,x,x,x
+c4f8,2025-11-01 00:00,x,x,x,x
