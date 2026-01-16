@@ -14,7 +14,7 @@ def preprocess():
 
     # Sort ZSF first
     paths = Paths("paris", site="zsf")
-    zsf_ms_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    zsf_ms_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
 
     # files = glob(str(zsf_ms_folder) + "/*_air.nc")
     # for f in files:
@@ -57,7 +57,7 @@ def preprocess():
 
     # Now sort BIR
     paths = Paths("paris", site="bir")
-    bir_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    bir_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
 
     files = glob(str(bir_folder) + "/*_air.nc")
     for f in files:
@@ -73,7 +73,7 @@ def preprocess():
 
     # # Now CMN
     # paths = Paths("paris", site="cmn")
-    # cmn_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    # cmn_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
 
     # files = glob(str(cmn_folder) + "/*_air.nc")
     # for f in files:
@@ -85,7 +85,7 @@ def preprocess():
 
     # # Now HUN
     # paths = Paths("paris", site="hun")
-    # hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    # hun_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
     # os.chdir(hun_folder)
     # os.system("cp ../taunus-ecd_HUN_flask/sf6_air.nc ./sf6_air.nc")
 
@@ -138,13 +138,13 @@ def postprocess():
     # Remove ECD sf6 from MS dirs
     current_dir = os.getcwd()
     paths = Paths("paris", site="zsf")
-    zsf_ms_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    zsf_ms_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
     os.chdir(zsf_ms_folder)
     os.system("rm sf6_air.nc")
 
     # os.chdir(current_dir)
     # paths = Paths("paris", site="hun")
-    # hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    # hun_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
     # os.chdir(hun_folder)
     # os.system("rm sf6_air.nc")
     
