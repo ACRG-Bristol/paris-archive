@@ -104,19 +104,19 @@ def postprocess():
         for f in files:
             x = xr.open_dataset(f)
             if site == "zsf" and x.attrs["species"] == "sf6":
-                x["instrument_type"].values = np.repeat(6, x.sizes["time"])
+                x["instrument_type"].attrs["comment"] = "UNDEFINED=-1, GCECD=0"
                 x["sampling_period"].values = np.repeat(3600, x.sizes["time"])
                 x.attrs["instrument_type"] = "GCECD"
                 x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD")
                 x.attrs["instrument"] = "Zugspitze GCECD"
                 x.attrs["sampling_period"] = 3600
             elif site == "cmn" and x.attrs["species"] == "sf6":
-                x["instrument_type"].values = np.repeat(6, x.sizes["time"])
+                x["instrument_type"].attrs["comment"] = "UNDEFINED=-1, GCECD=0"
                 x["mf"].values = x["mf"].values/1.002  # Convert to SIO-05 scale using Guillevic value
                 x.attrs["instrument_type"] = "GCECD"
                 x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD")
             else:
-                x["instrument_type"].values = np.repeat(13, x.sizes["time"])
+                x["instrument_type"].attrs["comment"] = "UNDEFINED=-1, GCMS=0"
                 x.attrs["instrument_type"] = "GCMS"
                 x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCMS")
             x.to_netcdf(f + "_temp")
@@ -126,8 +126,8 @@ def postprocess():
     # # Also change TOB SF6
     # files = glob("paris-archive/sf6/paris_hun*.nc")
     # x = xr.open_dataset(files[0])
-    # x["instrument_type"].values = np.repeat(-1, x.sizes["time"])
-    # x.attrs["instrument_type"] = "GCECD flask"
+    # x["instrument_type"].attrs["comment"] = "UNDEFINED=-1, GCECD-flask=0"
+    # x.attrs["instrument_type"] = "GCECD-flask"
     # x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD flask")
 
     # Now rezip
