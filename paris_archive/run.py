@@ -25,7 +25,7 @@ def preprocess():
         x["sample_time"] = x["time"] - 92*60
         x_std = xr.open_dataset(f.split("_")[-2] + "_std.nc")
         spec_name = list(x.keys())[0].split("_")[0]
-        rep = x_std[spec_name + "_C"].sel(time=slice(1721865600,4000000000)).std()  # average for latest std
+        rep = x_std[spec_name + "_C"].sel(time=slice(1721865600,1739404800)).std()  # average for GUF-44
         x[spec_name + "_std_stdev"] = x[spec_name + "_C"]
         x[spec_name + "_std_stdev"].values = np.repeat(float(rep), x.sizes["time"])
         x.to_netcdf(f + "_temp")
@@ -92,7 +92,7 @@ def preprocess():
     os.chdir(current_dir)
 
 def postprocess():
-    """Postprocess data files before running the main script 
+    """Postprocess data files after running the main script
     Need to convert filenames
     """
 
