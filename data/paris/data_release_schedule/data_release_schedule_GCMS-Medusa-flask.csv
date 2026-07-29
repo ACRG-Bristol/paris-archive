@@ -6,7 +6,7 @@
 # x indicates that no part of the record will be processed
 # General release date: 2025-01-01 00:00
 Species,BIR,CGR,HUN,ZSF,CMN
-hfc-23,,,x,,x
+hfc-23,,,x,x,x
 hfc-32,,x,,,x
 hfc-125,,x,,,x
 hfc-134a,,,,,x
@@ -19,5 +19,10 @@ hfc-365mfc,,,x,,x
 hfc-4310mee,,,x,,x
 sf6,,x,,,2017-12-27 07:00
 c2f6,,x,x,,x
-c3f8,,,x,,x
+c3f8,,,x,x,x
 c4f8,,,,,x
+nf3,,x,x,x,x
+cf4,,x,x,x,x
+hfo-1234yf,,,,,
+hfo-1234zee,,,,,
+hcfo-1233zde,,,,,
