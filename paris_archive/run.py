@@ -14,7 +14,7 @@ def preprocess():
 
     # Sort ZSF first
     paths = Paths("paris", site="zsf")
-    zsf_ms_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    zsf_ms_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
 
     files = glob(str(zsf_ms_folder) + "/*_air.nc")
     for f in files:
@@ -41,6 +41,7 @@ def preprocess():
     # Read in the repeatability values Cedric sent
     mf_rep = pd.read_csv("../zugspitze-ecd/SF6_Std_Stdv.txt",
                          sep="\t",
+                         na_values="-999.999",
                          index_col="Date",
                          date_format="%d.%m.%Y")
     time_df = x["sf6_C"].to_dataframe()
@@ -56,7 +57,7 @@ def preprocess():
 
     # Now sort BIR
     paths = Paths("paris", site="bir")
-    bir_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    bir_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
 
     files = glob(str(bir_folder) + "/*_air.nc")
     for f in files:
@@ -72,7 +73,7 @@ def preprocess():
 
     # Now CMN
     paths = Paths("paris", site="cmn")
-    cmn_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    cmn_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
 
     files = glob(str(cmn_folder) + "/*_air.nc")
     for f in files:
@@ -84,7 +85,7 @@ def preprocess():
 
     # Now HUN
     paths = Paths("paris", site="hun")
-    hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    hun_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
     os.chdir(hun_folder)
     os.system("cp ../taunus-ecd_HUN_flask/sf6_air.nc ./sf6_air.nc")
 
@@ -103,19 +104,19 @@ def postprocess():
         for f in files:
             x = xr.open_dataset(f)
             if site == "zsf" and x.attrs["species"] == "sf6":
-                x["instrument_type"].values = np.repeat(6, x.sizes["time"])
+                x["instrument_type"].attrs["comment"] = "UNDEFINED=-1, GCECD=0"
                 x["sampling_period"].values = np.repeat(3600, x.sizes["time"])
                 x.attrs["instrument_type"] = "GCECD"
                 x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD")
                 x.attrs["instrument"] = "Zugspitze GCECD"
                 x.attrs["sampling_period"] = 3600
             elif site == "cmn" and x.attrs["species"] == "sf6":
-                x["instrument_type"].values = np.repeat(6, x.sizes["time"])
+                x["instrument_type"].attrs["comment"] = "UNDEFINED=-1, GCECD=0"
                 x["mf"].values = x["mf"].values/1.002  # Convert to SIO-05 scale using Guillevic value
                 x.attrs["instrument_type"] = "GCECD"
                 x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD")
             else:
-                x["instrument_type"].values = np.repeat(13, x.sizes["time"])
+                x["instrument_type"].attrs["comment"] = "UNDEFINED=-1, GCMS=0"
                 x.attrs["instrument_type"] = "GCMS"
                 x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCMS")
             x.to_netcdf(f + "_temp")
@@ -125,8 +126,8 @@ def postprocess():
     # Also change TOB SF6
     files = glob("paris-archive/sf6/paris_hun*.nc")
     x = xr.open_dataset(files[0])
-    x["instrument_type"].values = np.repeat(-1, x.sizes["time"])
-    x.attrs["instrument_type"] = "GCECD flask"
+    x["instrument_type"].attrs["comment"] = "UNDEFINED=-1, GCECD-flask=0"
+    x.attrs["instrument_type"] = "GCECD-flask"
     x.attrs["comment"] = x.attrs["comment"].replace("GCMS Medusa flask", "GCECD flask")
 
     # Now rezip
@@ -137,13 +138,13 @@ def postprocess():
     # Remove ECD sf6 from MS dirs
     current_dir = os.getcwd()
     paths = Paths("paris", site="zsf")
-    zsf_ms_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    zsf_ms_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
     os.chdir(zsf_ms_folder)
     os.system("rm sf6_air.nc")
 
     os.chdir(current_dir)
     paths = Paths("paris", site="hun")
-    hun_folder = data_file_path("", "paris", sub_path=paths.gcms_flask_path)
+    hun_folder = data_file_path("", "paris", sub_path=getattr(paths, "GCMS-Medusa-flask_path"))
     os.chdir(hun_folder)
     os.system("rm sf6_air.nc")
     
